@@ -11,13 +11,17 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
-    //Je rajoute du code 
+    //Je rajoute du code
+    //imaginons qu'on affiche une liste
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        showlist();
 
        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -34,6 +38,11 @@ public class MainActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    private void showlist()
+    {
+        //LISTE
     }
 
     @Override
