@@ -14,7 +14,6 @@ import com.vogella.android.recyclerview.PokeApi;
 import com.vogella.android.recyclerview.Pokemon;
 import com.vogella.android.recyclerview.RestPokemonResponse;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -34,21 +33,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         makeApiCall();
-        showList();
+        //showList();
     }
 
-    private void showList() {
+    private void showList(List<Pokemon> pokemonList) {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        List<String> input = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            input.add("Test" + i);
-        }
+
         //input.add("I can add more");
-        mAdapter = new ListAdapter(input);
+        mAdapter = new ListAdapter(pokemonList);
         recyclerView.setAdapter(mAdapter);
     }
 
@@ -71,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<RestPokemonResponse> call, Response<RestPokemonResponse> response) {
                 if(response.isSuccessful() && response.body() != null){
                     List<Pokemon> pokemonList = response.body().getResults();
+                    showList(pokemonList);
                     Toast.makeText(getApplicationContext(), "API success", Toast.LENGTH_SHORT).show();
                 }else
                     showError();
