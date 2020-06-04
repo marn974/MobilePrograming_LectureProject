@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private SharedPreferences sharedPreferences;
     private Gson gson;
+    private List<Ghibli> ghibliList;
+
     //Where i call my functions...
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,29 +43,34 @@ public class MainActivity extends AppCompatActivity {
         gson = new GsonBuilder()
                 .setLenient()
                 .create();
-        //showList();
-        List<Pokemon> pokemonList = getDataFromCache();
-        if(pokemonList != null){
-            showList(pokemonList);
+
+
+
+        ghibliList = getDataFromCache();
+        if(ghibliList != null){
+            showList(ghibliList);
         }else{
             makeApiCall();
         }
+
+
     }
 
-    private List<Pokemon> getDataFromCache() {
+    private List<Ghibli> getDataFromCache() {
         //Get the string in "jsonPokemonList" that if empty is set to null
-        String jsonPokemon = sharedPreferences.getString(Constants.KEY_POKEMON_LIST, null);
+        String jsonGhibli = sharedPreferences.getString(Constants.KEY_GHIBLI_LIST, null);
 
-            if(jsonPokemon == null){
-                return null;
-            }else{
-                Type listType = new TypeToken<List<Pokemon>>(){}.getType();
-                return gson.fromJson(jsonPokemon, listType);
-            }
+        if(jsonGhibli == null){
+            return null;
+        }else{
+            Type listType = new TypeToken<List<Ghibli>>(){}.getType();
+            return gson.fromJson(jsonGhibli, listType);
+        }
 
     }
 
-    private void showList(List<Pokemon> pokemonList) {
+
+    private void showList(List<Ghibli> ghibliList) {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
@@ -71,11 +78,12 @@ public class MainActivity extends AppCompatActivity {
 
 
         //input.add("I can add more");
-        mAdapter = new ListAdapter(pokemonList);
+        mAdapter = new ListAdapter(ghibliList);
         recyclerView.setAdapter(mAdapter);
     }
 
-    static final String BASE_URL = "https://pokeapi.co/";
+
+    static final String BASE_URL = "https://ghibliapi.herokuapp.com";
     private void makeApiCall(){
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -83,40 +91,48 @@ public class MainActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
-        PokeApi pokeApi = retrofit.create(PokeApi.class);
 
-        Call<RestPokemonResponse> call = pokeApi.getPokemonResponse();
-        call.enqueue(new Callback<RestPokemonResponse>() {
+        final GhibliApi ghibliApi = retrofit.create(GhibliApi.class);
+
+        Call<List<Ghibli>> call = ghibliApi.getGhibliResponse();
+
+        call.enqueue(new Callback<List<Ghibli>>() {
             @Override
-            public void onResponse(Call<RestPokemonResponse> call, Response<RestPokemonResponse> response) {
-                if(response.isSuccessful() && response.body() != null){
-                    List<Pokemon> pokemonList = response.body().getResults();
-                    saveList(pokemonList);
-                    showList(pokemonList);
-                    Toast.makeText(getApplicationContext(), "API success", Toast.LENGTH_SHORT).show();
-                }else
-                    showError();
+            public void onResponse(Call<List<Ghibli>> call, Response<List<Ghibli>> response) {
 
+                if (response.isSuccessful() && response.body() != null) {
+                    ghibliList = response.body();
+                    saveList(ghibliList);
+                    showList(ghibliList);
+
+                    Toast.makeText(getApplicationContext(),"API success", Toast.LENGTH_SHORT).show();
+                } else {
+                    showError();
+                }
             }
 
             @Override
-            public void onFailure(Call<RestPokemonResponse> call, Throwable t) {
-                    showError();
+            public void onFailure(Call<List<Ghibli>> call, Throwable t) {
+                Toast.makeText(getApplicationContext(),t.getMessage(), Toast.LENGTH_SHORT).show();
             }
+
         });
+
     }
 
-    private void saveList(List<Pokemon> pokemonList) {
-        String jsonString = gson.toJson(pokemonList);
+    private void saveList(List<Ghibli> ghibliList) {
+        String jsonString = gson.toJson(ghibliList);
         sharedPreferences
                 .edit()
-                .putString( Constants.KEY_POKEMON_LIST, jsonString)
+                .putString( Constants.KEY_GHIBLI_LIST, jsonString)
                 .apply();
 
         Toast.makeText(getApplicationContext(), "List Sauvegardée", Toast.LENGTH_SHORT).show();
     }
 
+
     private void showError() {
         Toast.makeText(getApplicationContext(), "API error", Toast.LENGTH_SHORT).show();
     }
 }
+
