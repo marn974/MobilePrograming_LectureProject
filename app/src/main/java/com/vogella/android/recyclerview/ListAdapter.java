@@ -13,8 +13,7 @@ import com.example.td1_afteras_update.R;
 import java.util.List;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
-    private List<Pokemon> values;
-
+    private List<Ghibli> values;
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
@@ -32,7 +31,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         }
     }
 
-    public void add(int position, Pokemon item) {
+    public void add(int position, Ghibli item) {
         values.add(position, item);
         notifyItemInserted(position);
     }
@@ -43,7 +42,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public ListAdapter(List<Pokemon> myDataset) {
+    public ListAdapter(List<Ghibli> myDataset) {
         values = myDataset;
     }
 
@@ -63,11 +62,12 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
+
     public void onBindViewHolder(ViewHolder holder, final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        final Pokemon currentPokemon = values.get(position);
-        holder.txtHeader.setText(currentPokemon.getName());
+        final Ghibli currentGhibli = values.get(position);
+        holder.txtHeader.setText(currentGhibli.getTitle());
         holder.txtHeader.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,7 +75,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             }
         });
 
-        holder.txtFooter.setText(currentPokemon.getUrl());
+        holder.txtFooter.setText(currentGhibli.getReleaseDate());
+
     }
 
     // Return the size of your dataset (invoked by the layout manager)
