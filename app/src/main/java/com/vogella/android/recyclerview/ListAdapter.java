@@ -14,9 +14,13 @@ import java.util.List;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     private List<Ghibli> values;
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
+    private OnItemClickListener listener;
+
+
+    public interface OnItemClickListener{
+        void onItemClick(Ghibli item);
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         public TextView txtHeader;
@@ -31,6 +35,11 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         }
     }
 
+    public ListAdapter(List<Ghibli> list, OnItemClickListener listener){
+        this.listener = listener;
+        this.values = list; 
+    }
+
     public void add(int position, Ghibli item) {
         values.add(position, item);
         notifyItemInserted(position);
@@ -39,6 +48,14 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     public void remove(int position) {
         values.remove(position);
         notifyItemRemoved(position);
+    }
+
+    public OnItemClickListener getListener() {
+        return listener;
+    }
+
+    public void setListener(OnItemClickListener listener) {
+        this.listener = listener;
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
@@ -68,14 +85,16 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         // - replace the contents of the view with that element
         final Ghibli currentGhibli = values.get(position);
         holder.txtHeader.setText(currentGhibli.getTitle());
-        holder.txtHeader.setOnClickListener(new OnClickListener() {
+        holder.txtFooter.setText(currentGhibli.getReleaseDate());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v) {
-                remove(position);
+            public void onClick(View v){
+                listener.onItemClick(currentGhibli);
             }
         });
 
-        holder.txtFooter.setText(currentGhibli.getReleaseDate());
+
 
     }
 

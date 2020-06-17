@@ -1,6 +1,7 @@
 package com.vogella.android.recyclerview;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -76,9 +77,13 @@ public class MainActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-
         //input.add("I can add more");
-        mAdapter = new ListAdapter(ghibliList);
+        mAdapter = new ListAdapter(ghibliList, new ListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Ghibli item) {
+                navigateToAnotherActivity(item);
+            }
+        });
         recyclerView.setAdapter(mAdapter);
     }
 
@@ -134,5 +139,15 @@ public class MainActivity extends AppCompatActivity {
     private void showError() {
         Toast.makeText(getApplicationContext(), "API error", Toast.LENGTH_SHORT).show();
     }
+
+
+
+    public void navigateToAnotherActivity(Ghibli movie){
+        Intent intent = new Intent(MainActivity.this, DetailsRecyclerViewElement.class);
+        intent.putExtra("title", movie.getTitle());
+        intent.putExtra("description", movie.getDescription());
+        MainActivity.this.startActivity(intent);
+    }
+
 }
 
