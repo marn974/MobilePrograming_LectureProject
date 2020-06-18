@@ -29,7 +29,7 @@ public class DetailsRecyclerViewElement extends AppCompatActivity {
         Intent intent = getIntent();
         String tempTitle = intent.getStringExtra("title");
         String tempDescription = intent.getStringExtra("description");
-        //System.out.println(tempDescription + " " +tempTitle);
+        System.out.println(tempDescription + " WRONG PLACE WRONG PLACE" +tempTitle);
 
         showDescription(tempDescription);
         showTitle(tempTitle);

@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.vogella.android.recyclerview.Constants;
-import com.vogella.android.recyclerview.data.GhibliApi;
+import com.vogella.android.recyclerview.Singletons;
 import com.vogella.android.recyclerview.presentation.model.Ghibli;
 import com.vogella.android.recyclerview.presentation.view.MainActivity;
 
@@ -15,8 +15,6 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 //liste les actions utilisateurs lié à la main activity
 public class MainController {
@@ -48,16 +46,8 @@ public class MainController {
     }
 
     private void makeApiCall(){
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Constants.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
-
-
-        final GhibliApi ghibliApi = retrofit.create(GhibliApi.class);
-
-        Call<List<Ghibli>> call = ghibliApi.getGhibliResponse();
+        
+        Call<List<Ghibli>> call = Singletons.getGhibliApi().getGhibliResponse();
 
         call.enqueue(new Callback<List<Ghibli>>() {
             @Override

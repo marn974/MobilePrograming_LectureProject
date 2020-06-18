@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.td1_afteras_update.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.vogella.android.recyclerview.Singletons;
 import com.vogella.android.recyclerview.presentation.controller.MainController;
 import com.vogella.android.recyclerview.presentation.model.Ghibli;
 
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        controller = new MainController(this, new GsonBuilder().setLenient().create(), getSharedPreferences("application_esiea", Context.MODE_PRIVATE));
+        controller = new MainController(MainActivity.this, Singletons.getGson(), Singletons.getSharedPreferences(getApplicationContext()));
         controller.onStart();
 
     }
