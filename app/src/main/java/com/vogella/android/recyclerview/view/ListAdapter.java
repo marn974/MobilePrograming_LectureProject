@@ -1,14 +1,14 @@
-package com.vogella.android.recyclerview;
+package com.vogella.android.recyclerview.view;
 
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.td1_afteras_update.R;
+import com.vogella.android.recyclerview.model.Ghibli;
 
 import java.util.List;
 
