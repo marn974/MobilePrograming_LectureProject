@@ -1,4 +1,4 @@
-package com.vogella.android.recyclerview.view;
+package com.vogella.android.recyclerview.presentation.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import android.widget.Toolbar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.td1_afteras_update.R;
-import com.vogella.android.recyclerview.model.Ghibli;
+import com.vogella.android.recyclerview.presentation.model.Ghibli;
 
 public class DetailsRecyclerViewElement extends AppCompatActivity {
     ImageView poster;

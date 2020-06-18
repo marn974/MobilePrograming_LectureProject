@@ -1,4 +1,4 @@
-package com.vogella.android.recyclerview.model;
+package com.vogella.android.recyclerview.presentation.model;
 
 //Define return object
 public class Ghibli {

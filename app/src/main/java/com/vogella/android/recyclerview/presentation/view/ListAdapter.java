@@ -1,4 +1,4 @@
-package com.vogella.android.recyclerview.view;
+package com.vogella.android.recyclerview.presentation.view;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.td1_afteras_update.R;
-import com.vogella.android.recyclerview.model.Ghibli;
+import com.vogella.android.recyclerview.presentation.model.Ghibli;
 
 import java.util.List;
 

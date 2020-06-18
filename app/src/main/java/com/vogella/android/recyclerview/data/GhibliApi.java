@@ -1,6 +1,6 @@
 package com.vogella.android.recyclerview.data;
 
-import com.vogella.android.recyclerview.model.Ghibli;
+import com.vogella.android.recyclerview.presentation.model.Ghibli;
 
 import java.util.List;
 

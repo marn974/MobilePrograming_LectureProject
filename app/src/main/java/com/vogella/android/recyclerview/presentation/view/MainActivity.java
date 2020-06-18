@@ -1,4 +1,4 @@
-package com.vogella.android.recyclerview.view;
+package com.vogella.android.recyclerview.presentation.view;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,20 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.td1_afteras_update.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
-import com.vogella.android.recyclerview.Constants;
-import com.vogella.android.recyclerview.controller.MainController;
-import com.vogella.android.recyclerview.data.GhibliApi;
-import com.vogella.android.recyclerview.model.Ghibli;
+import com.vogella.android.recyclerview.presentation.controller.MainController;
+import com.vogella.android.recyclerview.presentation.model.Ghibli;
 
-import java.lang.reflect.Type;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
