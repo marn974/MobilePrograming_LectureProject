@@ -23,9 +23,6 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
-    private SharedPreferences sharedPreferences;
-    private Gson gson;
-    private List<Ghibli> ghibliList;
 
     private MainController controller;
 
@@ -52,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new ListAdapter(ghibliList, new ListAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Ghibli item) {
-                navigateToAnotherActivity(item);
+                controller.onItemClick(item);
             }
         });
         recyclerView.setAdapter(mAdapter);
