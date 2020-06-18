@@ -64,8 +64,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void navigateToAnotherActivity(Ghibli movie){
         Intent intent = new Intent(MainActivity.this, DetailsRecyclerViewElement.class);
-        intent.putExtra("title", movie.getTitle());
-        intent.putExtra("description", movie.getDescription());
+
+        intent.putExtra("movieKey", Singletons.getGson().toJson(movie));
         MainActivity.this.startActivity(intent);
     }
 
