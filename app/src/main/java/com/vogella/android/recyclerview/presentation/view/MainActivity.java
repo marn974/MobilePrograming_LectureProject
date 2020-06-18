@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        controller = new MainController(MainActivity.this, Singletons.getGson(), Singletons.getSharedPreferences(getApplicationContext()));
+        controller = Singletons.getMainController(MainActivity.this);
         controller.onStart();
 
     }

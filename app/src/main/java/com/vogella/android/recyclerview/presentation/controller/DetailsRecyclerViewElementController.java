@@ -5,10 +5,12 @@ import android.content.Intent;
 import com.vogella.android.recyclerview.Singletons;
 import com.vogella.android.recyclerview.presentation.model.Ghibli;
 import com.vogella.android.recyclerview.presentation.view.DetailsRecyclerViewElement;
+import com.vogella.android.recyclerview.presentation.view.MainActivity;
 
 public class DetailsRecyclerViewElementController {
     DetailsRecyclerViewElement view;
     private static Ghibli movie;
+
 
     public DetailsRecyclerViewElementController(DetailsRecyclerViewElement view) {
         this.view = view;
@@ -23,6 +25,5 @@ public class DetailsRecyclerViewElementController {
         view.showDetails(movie);
 
     }
-
 
 }
