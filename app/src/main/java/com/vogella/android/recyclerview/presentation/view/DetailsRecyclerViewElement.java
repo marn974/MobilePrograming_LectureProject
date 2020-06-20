@@ -30,9 +30,9 @@ public class DetailsRecyclerViewElement extends AppCompatActivity {
 
         controller = new DetailsRecyclerViewElementController(DetailsRecyclerViewElement.this);
 
-        poster = (ImageView) findViewById(R.id.imageView2);
-        description = (TextView) findViewById(R.id.textViewDescription);
-        title = (TextView) findViewById(R.id.textViewMovieTitle);
+        poster = findViewById(R.id.imageView2);
+        description =  findViewById(R.id.textViewDescription);
+        title = findViewById(R.id.textViewMovieTitle);
 
         controller.onStart();
 
@@ -44,14 +44,11 @@ public class DetailsRecyclerViewElement extends AppCompatActivity {
         description.setText(movie.getDescription());
         title.setText(movie.getTitle());
 
-        String ressource = "poster_"+movie.getTitle().replace(" ", "_" ).replace("'", "_").toLowerCase();
-        poster.setImageResource(getImageId(getApplicationContext(), ressource));
+        String ressource = movie.getPosterName(movie.getTitle());
+        poster.setImageResource(movie.getImageId(getApplicationContext(), ressource));
 
     }
 
-    public static int getImageId(Context context, String imageName) {
-        return context.getResources().getIdentifier("drawable/" + imageName, null, context.getPackageName());
-    }
 
 
 }

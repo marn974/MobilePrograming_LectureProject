@@ -40,13 +40,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void showList(List<Ghibli> ghibliList) {
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
         //input.add("I can add more");
-        mAdapter = new ListAdapter(ghibliList, getApplicationContext(), new ListAdapter.OnItemClickListener() {
+        mAdapter = new ListAdapter(ghibliList, new ListAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Ghibli item) {
                 controller.onItemClick(item);

@@ -76,11 +76,14 @@ public class Ghibli {
     }
 
     public String getPosterName(String name){
-        return "poster_"+name.replaceAll(" ", "_").toLowerCase();
+        return  "poster_"+name.replace(" ", "_" ).replace("'", "_").toLowerCase();
+    }
+    public static int getImageId(Context context, String imageName) {
+        return context.getResources().getIdentifier("drawable/" + imageName, null, context.getPackageName());
     }
 
-    public int getImagePosterId(Context context, String imageName){
-        imageName = getPosterName(imageName);
-        return context.getResources().getIdentifier("drawable/" + imageName, null, context.getPackageName());
+    public String  getImageUrl(){
+
+        return "Bonjour";
     }
 }

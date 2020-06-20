@@ -18,7 +18,7 @@ import java.util.List;
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     private List<Ghibli> values;
     private OnItemClickListener listener;
-    private Context context;
+
 
 
     public interface OnItemClickListener{
@@ -35,16 +35,15 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         public ViewHolder(View v) {
             super(v);
             layout = v;
-            txtHeader = (TextView) v.findViewById(R.id.firstLine);
-            txtFooter = (TextView) v.findViewById(R.id.secondLine);
-            image = (ImageView) v.findViewById(R.id.icon);
+            txtHeader = v.findViewById(R.id.firstLine);
+            txtFooter =  v.findViewById(R.id.secondLine);
+            image = v.findViewById(R.id.icon);
 
         }
     }
 
-    public ListAdapter(List<Ghibli> list, Context context, OnItemClickListener listener){
+    public ListAdapter(List<Ghibli> list, OnItemClickListener listener){
         this.listener = listener;
-        this.context = context;
         this.values = list;
     }
 
@@ -115,8 +114,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         return values.size();
     }
 
-    public static int getIconId(Context context, String imageName) {
-        return context.getResources().getIdentifier("drawable/" + imageName, null, context.getPackageName());
-    }
+
 
 }
