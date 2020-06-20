@@ -94,7 +94,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         holder.txtFooter.setText(currentGhibli.getProducer());
 
 
-        Picasso.get().load("https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRqawZlCHgOdXwl58OB0CiEQmuqQaDPE9YKEOtEnc225cdzMhov").resize(150, 210).into(holder.image);
+        Picasso.get().load(currentGhibli.getImageUrl(currentGhibli.getTitle())).resize(150, 210).into(holder.image);
 
         holder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
