@@ -1,7 +1,9 @@
 package com.vogella.android.recyclerview.presentation.view;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -35,11 +37,20 @@ public class DetailsRecyclerViewElement extends AppCompatActivity {
         controller.onStart();
 
 
+
     }
 
     public void showDetails(Ghibli movie) {
         description.setText(movie.getDescription());
         title.setText(movie.getTitle());
+
+        String ressource = "poster_"+movie.getTitle().replace(" ", "_" ).replace("'", "_").toLowerCase();
+        poster.setImageResource(getImageId(getApplicationContext(), ressource));
+
+    }
+
+    public static int getImageId(Context context, String imageName) {
+        return context.getResources().getIdentifier("drawable/" + imageName, null, context.getPackageName());
     }
 
 

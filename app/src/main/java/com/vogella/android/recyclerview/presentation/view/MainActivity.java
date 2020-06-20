@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         //input.add("I can add more");
-        mAdapter = new ListAdapter(ghibliList, new ListAdapter.OnItemClickListener() {
+        mAdapter = new ListAdapter(ghibliList, getApplicationContext(), new ListAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Ghibli item) {
                 controller.onItemClick(item);

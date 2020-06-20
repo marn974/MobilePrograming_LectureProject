@@ -5,7 +5,7 @@ import android.content.Intent;
 import com.vogella.android.recyclerview.Singletons;
 import com.vogella.android.recyclerview.presentation.model.Ghibli;
 import com.vogella.android.recyclerview.presentation.view.DetailsRecyclerViewElement;
-import com.vogella.android.recyclerview.presentation.view.MainActivity;
+
 
 public class DetailsRecyclerViewElementController {
     DetailsRecyclerViewElement view;
@@ -25,5 +25,7 @@ public class DetailsRecyclerViewElementController {
         view.showDetails(movie);
 
     }
+
+
 
 }
