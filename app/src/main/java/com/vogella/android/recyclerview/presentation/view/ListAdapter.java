@@ -1,13 +1,16 @@
 package com.vogella.android.recyclerview.presentation.view;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.td1_afteras_update.R;
+import com.squareup.picasso.Picasso;
 import com.vogella.android.recyclerview.presentation.model.Ghibli;
 
 import java.util.List;
@@ -15,6 +18,7 @@ import java.util.List;
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     private List<Ghibli> values;
     private OnItemClickListener listener;
+
 
 
     public interface OnItemClickListener{
@@ -25,19 +29,22 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         // each data item is just a string in this case
         public TextView txtHeader;
         public TextView txtFooter;
+        public ImageView image;
         public View layout;
 
         public ViewHolder(View v) {
             super(v);
             layout = v;
-            txtHeader = (TextView) v.findViewById(R.id.firstLine);
-            txtFooter = (TextView) v.findViewById(R.id.secondLine);
+            txtHeader = v.findViewById(R.id.firstLine);
+            txtFooter =  v.findViewById(R.id.secondLine);
+            image = v.findViewById(R.id.icon);
+
         }
     }
 
     public ListAdapter(List<Ghibli> list, OnItemClickListener listener){
         this.listener = listener;
-        this.values = list; 
+        this.values = list;
     }
 
     public void add(int position, Ghibli item) {
@@ -65,13 +72,11 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
     // Create new views (invoked by the layout manager)
     @Override
-    public ListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                     int viewType) {
+    public ListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
-        LayoutInflater inflater = LayoutInflater.from(
-                parent.getContext());
-        View v =
-                inflater.inflate(R.layout.row_layout, parent, false);
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+
+        View v = inflater.inflate(R.layout.row_layout, parent, false);
         // set the view's size, margins, paddings and layout parameters
         ViewHolder vh = new ViewHolder(v);
         return vh;
@@ -84,8 +89,12 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         final Ghibli currentGhibli = values.get(position);
+
         holder.txtHeader.setText(currentGhibli.getTitle());
-        holder.txtFooter.setText(currentGhibli.getReleaseDate());
+        holder.txtFooter.setText(currentGhibli.getProducer());
+
+
+        Picasso.get().load("https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRqawZlCHgOdXwl58OB0CiEQmuqQaDPE9YKEOtEnc225cdzMhov").resize(150, 210).into(holder.image);
 
         holder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -96,6 +105,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
 
 
+
     }
 
     // Return the size of your dataset (invoked by the layout manager)
@@ -103,5 +113,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     public int getItemCount() {
         return values.size();
     }
+
+
 
 }

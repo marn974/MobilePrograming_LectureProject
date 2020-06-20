@@ -23,9 +23,6 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
-    private SharedPreferences sharedPreferences;
-    private Gson gson;
-    private List<Ghibli> ghibliList;
 
     private MainController controller;
 
@@ -35,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        controller = new MainController(MainActivity.this, Singletons.getGson(), Singletons.getSharedPreferences(getApplicationContext()));
+        controller = Singletons.getMainController(MainActivity.this);
         controller.onStart();
 
     }
@@ -43,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void showList(List<Ghibli> ghibliList) {
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -52,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new ListAdapter(ghibliList, new ListAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Ghibli item) {
-                navigateToAnotherActivity(item);
+                controller.onItemClick(item);
             }
         });
         recyclerView.setAdapter(mAdapter);
@@ -67,8 +64,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void navigateToAnotherActivity(Ghibli movie){
         Intent intent = new Intent(MainActivity.this, DetailsRecyclerViewElement.class);
-        intent.putExtra("title", movie.getTitle());
-        intent.putExtra("description", movie.getDescription());
+
+        intent.putExtra("movieKey", Singletons.getGson().toJson(movie));
         MainActivity.this.startActivity(intent);
     }
 

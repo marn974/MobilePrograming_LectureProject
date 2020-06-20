@@ -42,7 +42,7 @@ public class MainController {
     }
 
     public void onItemClick(Ghibli movie){
-
+        view.navigateToAnotherActivity(movie);
     }
 
     private void makeApiCall(){

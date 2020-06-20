@@ -1,5 +1,7 @@
 package com.vogella.android.recyclerview.presentation.model;
 
+import android.content.Context;
+
 //Define return object
 public class Ghibli {
 
@@ -8,12 +10,26 @@ public class Ghibli {
     private String description;
     private String director;
     private String producer;
-    private String releaseDate;
+    private String release_date;
     private String[] people;
-    private int rtScore;
+    private String rt_score;
     private String[] species;
     private String[] locations;
     private String url;
+
+    public Ghibli(String id, String title, String description, String director, String producer, String release_date, String[] people, String rt_score, String[] species, String[] locations, String url) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.director = director;
+        this.producer = producer;
+        this.release_date = release_date;
+        this.people = people;
+        this.rt_score = rt_score;
+        this.species = species;
+        this.locations = locations;
+        this.url = url;
+    }
 
     public String getId() {
         return id;
@@ -36,15 +52,15 @@ public class Ghibli {
     }
 
     public String getReleaseDate() {
-        return releaseDate;
+        return release_date;
     }
 
     public String[] getPeople() {
         return people;
     }
 
-    public int getRtScore() {
-        return rtScore;
+    public String getRt_score() {
+        return rt_score;
     }
 
     public String[] getSpecies() {
@@ -57,5 +73,17 @@ public class Ghibli {
 
     public String getUrl() {
         return url;
+    }
+
+    public String getPosterName(String name){
+        return  "poster_"+name.replace(" ", "_" ).replace("'", "_").toLowerCase();
+    }
+    public static int getImageId(Context context, String imageName) {
+        return context.getResources().getIdentifier("drawable/" + imageName, null, context.getPackageName());
+    }
+
+    public String  getImageUrl(){
+
+        return "Bonjour";
     }
 }

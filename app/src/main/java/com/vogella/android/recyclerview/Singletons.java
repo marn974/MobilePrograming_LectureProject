@@ -6,6 +6,10 @@ import android.content.SharedPreferences;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.vogella.android.recyclerview.data.GhibliApi;
+import com.vogella.android.recyclerview.presentation.controller.DetailsRecyclerViewElementController;
+import com.vogella.android.recyclerview.presentation.controller.MainController;
+import com.vogella.android.recyclerview.presentation.view.DetailsRecyclerViewElement;
+import com.vogella.android.recyclerview.presentation.view.MainActivity;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -15,6 +19,8 @@ public class Singletons {
     private static Gson gson;
     private static GhibliApi ghibliApi;
     private static SharedPreferences sharedPreferences;
+    private static MainController mainController;
+    private static DetailsRecyclerViewElementController controller;
 
     public static Gson getGson() {
 
@@ -45,4 +51,13 @@ public class Singletons {
 
         return sharedPreferences;
     }
+
+    public static MainController getMainController(MainActivity view) {
+        if(mainController == null){
+            mainController = new MainController(view, Singletons.getGson(), Singletons.getSharedPreferences(view.getApplicationContext()));
+        }
+
+        return mainController;
+    }
+
 }
