@@ -29,6 +29,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         // each data item is just a string in this case
         public TextView txtHeader;
         public TextView txtFooter;
+        public TextView txtMid;
         public ImageView image;
         public View layout;
 
@@ -37,6 +38,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             layout = v;
             txtHeader = v.findViewById(R.id.firstLine);
             txtFooter =  v.findViewById(R.id.secondLine);
+            txtMid = v.findViewById(R.id.date);
             image = v.findViewById(R.id.icon);
 
         }
@@ -92,6 +94,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
         holder.txtHeader.setText(currentGhibli.getTitle());
         holder.txtFooter.setText(currentGhibli.getProducer());
+        holder.txtMid.setText(currentGhibli.getReleaseDate());
 
 
         Picasso.get().load(currentGhibli.getImageUrl(currentGhibli.getTitle())).resize(150, 210).into(holder.image);
