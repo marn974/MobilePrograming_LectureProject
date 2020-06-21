@@ -15,4 +15,6 @@
     <string name="movie_title">title</string>
     <string name="movie_image">image</string>
     <string name="icon_description">image</string>
+    <string name="welcome_screen_image">image</string>
+    <string name="welcome_screen_text">Welcome</string>
 </resources>
