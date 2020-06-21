@@ -14,6 +14,7 @@ Cette dernière affiche une liste de films du studio japonais Ghibli dont on peu
 * Toolbar avec un bouton retour et du texte 
 * Ecran de démarrage animée
 * Icône de l'application personnalisé
+* Gitflow
 
 ##  **Fonctionnalités**
 Un écran de démarrage apparait lors du lancement de l'application. Elle est animée :
