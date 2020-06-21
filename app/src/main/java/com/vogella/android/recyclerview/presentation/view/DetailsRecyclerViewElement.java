@@ -1,30 +1,27 @@
 package com.vogella.android.recyclerview.presentation.view;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import androidx.appcompat.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.td1_afteras_update.R;
-import com.vogella.android.recyclerview.Singletons;
+
 import com.vogella.android.recyclerview.presentation.controller.DetailsRecyclerViewElementController;
 import com.vogella.android.recyclerview.presentation.model.Ghibli;
-import androidx.appcompat.app.ActionBarDrawerToggle;
+
 
 public class DetailsRecyclerViewElement extends AppCompatActivity {
     ImageView poster;
     TextView description, title;
     Toolbar bar;
-    Ghibli movie;
+
     private DetailsRecyclerViewElementController controller;
     //Where i call my functions...
     @Override
@@ -49,14 +46,10 @@ public class DetailsRecyclerViewElement extends AppCompatActivity {
         bar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Back to main page", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), "Back to main page", Toast.LENGTH_LONG).show();
                 controller.navigationIconClicked();
             }
         });
-
-
-
-
 
         }
 

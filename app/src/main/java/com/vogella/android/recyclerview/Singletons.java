@@ -20,7 +20,6 @@ public class Singletons {
     private static GhibliApi ghibliApi;
     private static SharedPreferences sharedPreferences;
     private static MainController mainController;
-    private static DetailsRecyclerViewElementController controller;
 
     public static Gson getGson() {
 
