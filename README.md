@@ -11,6 +11,7 @@ Cette dernière affiche une liste de films du studio japonais Ghibli dont on peu
 * Ecran avec le détail d'un élément
 * Architecture MVC 
 * Singleton 
+* Principes SOLID
 * Toolbar avec un bouton retour et du texte 
 * Ecran de démarrage animée
 * Icône de l'application personnalisé
