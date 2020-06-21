@@ -5,9 +5,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toolbar;
+import android.widget.Toast;
+
+import androidx.appcompat.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,6 +18,7 @@ import com.example.td1_afteras_update.R;
 import com.vogella.android.recyclerview.Singletons;
 import com.vogella.android.recyclerview.presentation.controller.DetailsRecyclerViewElementController;
 import com.vogella.android.recyclerview.presentation.model.Ghibli;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 
 public class DetailsRecyclerViewElement extends AppCompatActivity {
     ImageView poster;
@@ -32,13 +36,30 @@ public class DetailsRecyclerViewElement extends AppCompatActivity {
 
         poster = findViewById(R.id.imageView2);
         description =  findViewById(R.id.textViewDescription);
-        title = findViewById(R.id.textViewMovieTitle);
+        title = findViewById(R.id.toolbar_title);
+        bar = findViewById(R.id.toolbar);
+        bar.setNavigationIcon(R.drawable.baseline_arrow_back_ios_black_18dp);
+        setTitle("");
+        setSupportActionBar(bar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         controller.onStart();
 
 
+        bar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Back to main page", Toast.LENGTH_LONG).show();
+                controller.navigationIconClicked();
+            }
+        });
 
-    }
+
+
+
+
+        }
+
 
     public void showDetails(Ghibli movie) {
         description.setText(movie.getDescription());
@@ -48,6 +69,10 @@ public class DetailsRecyclerViewElement extends AppCompatActivity {
         poster.setImageResource(movie.getImageId(getApplicationContext(), ressource));
 
     }
+
+
+
+
 
 
 

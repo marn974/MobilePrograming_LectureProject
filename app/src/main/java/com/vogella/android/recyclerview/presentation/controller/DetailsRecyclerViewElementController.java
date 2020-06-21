@@ -24,8 +24,12 @@ public class DetailsRecyclerViewElementController {
 
         view.showDetails(movie);
 
+
+
     }
 
-
+    public void navigationIconClicked() {
+        view.finish();
+    }
 
 }

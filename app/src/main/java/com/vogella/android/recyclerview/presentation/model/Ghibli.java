@@ -82,8 +82,7 @@ public class Ghibli {
         return context.getResources().getIdentifier("drawable/" + imageName, null, context.getPackageName());
     }
 
-    public String  getImageUrl(){
-
-        return "Bonjour";
+    public String  getImageUrl(String name){
+        return "https://raw.githubusercontent.com/marn974/MobilePrograming_LectureProject/master/app/src/main/res/drawable/"+getPosterName(name)+".jpg";
     }
 }
