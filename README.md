@@ -26,8 +26,8 @@ Un écran de démarrage apparait lors du lancement de l'application. Elle est an
 
 Liste de films du studio Ghibli utilisant une recycler view :  
 
-![Screenshot_20200621-195827_Ghibli](https://user-images.githubusercontent.com/62256938/85232400-eef01d00-b3fe-11ea-9ead-4710ea04fd42.jpg)
-![Screenshot_20200621-195841_Ghibli](https://user-images.githubusercontent.com/62256938/85232401-ef88b380-b3fe-11ea-98bc-3b6ac0ca2260.jpg)
+![Screenshot_20200621-220404_Ghibli](https://user-images.githubusercontent.com/62256938/85234152-b60a7500-b40b-11ea-93a9-e027a8678ef1.jpg)
+![Screenshot_20200621-220414_Ghibli](https://user-images.githubusercontent.com/62256938/85234153-b6a30b80-b40b-11ea-91f7-3fc61b6931de.jpg)
 
 
 Une nouvelle activité se déclenche lorsqu'on clique sur un des films de la liste : 
