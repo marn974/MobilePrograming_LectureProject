@@ -1,8 +1,8 @@
 package com.vogella.android.recyclerview.presentation.view;
 
-import android.content.Context;
+
 import android.content.Intent;
-import android.content.SharedPreferences;
+
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -11,8 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.td1_afteras_update.R;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+
 import com.vogella.android.recyclerview.Singletons;
 import com.vogella.android.recyclerview.presentation.controller.MainController;
 import com.vogella.android.recyclerview.presentation.model.Ghibli;

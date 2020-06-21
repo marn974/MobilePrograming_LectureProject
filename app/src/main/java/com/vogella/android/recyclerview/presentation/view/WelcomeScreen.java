@@ -14,12 +14,13 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.td1_afteras_update.R;
+import com.vogella.android.recyclerview.Constants;
 
 public class WelcomeScreen extends Activity {
     Animation topAnimation, bottomAnimation;
     ImageView logo;
     TextView message;
-    private static int SPLASH_SCREEN = 5000;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -44,7 +45,7 @@ public class WelcomeScreen extends Activity {
                 finish();
 
             }
-        },SPLASH_SCREEN);
+        }, Constants.SPLASH_SCREEN);
     }
 
 
